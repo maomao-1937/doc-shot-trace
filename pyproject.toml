@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling>=1.25,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "doc-shot-trace"
+version = "0.1.0"
+description = "Local OCR review queue for changed UI labels in Markdown screenshots"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["rapidocr>=3.9,<4", "onnxruntime>=1.20,<2", "Pillow>=11,<13"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+doc-shot-trace = "doc_shot_trace.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/doc_shot_trace"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
